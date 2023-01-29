@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+  <link href="Style copy.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+<script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  <py-config>
+    packages = [
+      "pandas"
+    ]
+  </py-config>
+
+  
+  <title>
+    Sondage
+  </title>
+  <link href="logo-removebg-preview_6.png" rel="icon">
+</head>
+
+<body>
+  <!-- here in nav tag used two classes 
+             that is navbar and background-->
+  <!-- each class declared in nav tag will be 
+             used to design the form using CSS-->
+             <div id="info">  
+             <div class="bg-img">
+              <div class="container" id="navbar">
+                <nav id="nav" class="navbar navbar-expand-lg bs-light">
+                  <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><img src="logo-removebg-preview_6.png"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarScroll">
+                      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                        <li class="nav-item">
+                          <a class="nav-link " aria-current="page" href="Accueil.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Les communes membres</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Les elus</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="NousContacter.html">Nous Contacter</a>
+                        </li>
+                        <li class="nav-item"> 
+                          <a class="nav-link active" href="sondage.html">Sondage</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                         
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                              <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                          </ul>
+                        </li>
+                        
+                      </ul>
+                      <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button id="Boutonrechercher" class="btn btn-outline-success" type="submit"><img src="boutton.png" height ="20" width="20" /></button>
+                      </form>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+             </div>
+            
+             <div
+             class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center">
+            
+           </div>
+           <div id="fondPage">
+           <div class="container">
+            <h12 class="display-6">ㅤㅤㅤㅤㅤㅤㅤㅤ</h12>
+            <h2 class="display-4">Sondage</h2>
+           <py-script>
+              from pandas import * 
+              from pyodide.http import open_url
+              Aliments = read_csv(open_url('https://raw.githubusercontent.com/LionJetSki/Sae/main/Aliments.csv'), sep=';')
+              Sondage = read_csv(open_url('https://raw.githubusercontent.com/LionJetSki/Sae/main/SONDAGEFini2.csv'), sep=';')
+          
+              entrees_et_plats_composes = 0
+              fruits_legumes_legumineuses_oleagineux = 0
+              pates_diverses_produits_cerealiers= 0
+              viandes_œufs_poissons_assimiles = 0
+              produits_laitiers_assimiles = 0
+              eaux_autres_boissons = 0
+              produits_sucres = 0
+              glaces_sorbets = 0
+              matieres_grasses = 0
+              aides_culinaires_ingredients_divers = 0
+              aliments_infantiles = 0
+              
+              ListePersBio =[]
+              ListePersVegan =[]
+              ListePersCasher =[]
+              ListePersHalal =[]
+              NbHabitant =len(Sondage.Nom)
+              Colonne = Sondage.columns[8:]
+              
+              for i in range (NbHabitant):
+                halal = 0
+                casher = 0
+                bio = 0
+                vegan = 0
+                for a in range (len(Colonne)):
+
+                  aliment = Sondage[Colonne[a]][i]                 
+                  BioOuVegan = Aliments[Aliments.alim_code==aliment].alim_nom_fr
+                  CasherOuHalal = Aliments[Aliments.alim_code==aliment].alim_ssssgrp_nom_fr
+                  CatAliment = Aliments[Aliments.alim_code==aliment].alim_grp_code
+                  
+                  if "bio" in BioOuVegan.values[0] :
+                      bio+=1
+                  if "vegan" in BioOuVegan.values[0] :
+                      vegan+=1
+                  if "casher" in CasherOuHalal.values[0] :
+                      casher+=1
+                  if "halal" in CasherOuHalal.values[0] :
+                      halal+=1
+                   
+                  if 1 == CatAliment.values[0] :
+                    entrees_et_plats_composes +=1
+                  if 2 == CatAliment.values[0] :
+                    fruits_legumes_legumineuses_oleagineux +=1
+                  if 3 == CatAliment.values[0] :
+                    pates_diverses_produits_cerealiers +=1
+                  if 4 == CatAliment.values[0] :
+                    viandes_œufs_poissons_assimiles +=1
+                  if 5 == CatAliment.values[0] :
+                    produits_laitiers_assimiles +=1
+                  if 6 == CatAliment.values[0] :
+                    eaux_autres_boissons +=1
+                  if 7 == CatAliment.values[0] :
+                    produits_sucres +=1
+                  if 8 == CatAliment.values[0] :
+                    glaces_sorbets +=1
+                  if 9 == CatAliment.values[0] :
+                    matieres_grasses +=1
+                  if 10 == CatAliment.values[0] :
+                    aides_culinaires_ingredients_divers +=1
+                  if 11 == CatAliment.values[0] :
+                    aliments_infantiles +=1
+                    
+
+                if bio > 0:
+                  ListePersBio.append(Sondage.Nom[i])
+                if vegan > 0:
+                  ListePersVegan.append(Sondage.Nom[i])
+                if casher > 0:
+                  ListePersCasher.append(Sondage.Nom[i])
+                if halal > 0:
+                  ListePersHalal.append(Sondage.Nom[i])
+
+              print("<p>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</p>")
+              print("<p>La liste des habitants consommant du bio est " + str(ListePersBio) + "</p>")
+              print("<p>La liste des habitants consommant des produits vegan est "+ str(ListePersVegan) + "</p>")
+              print("<p>La liste des habitants consommant du casher est "+ str(ListePersCasher) + "</p>")
+              print("<p>La liste des habitants consommant du halal est "+ str(ListePersHalal) + "</p>")
+              print("<p>Les categories de produits les plus choisies sont : ",end = "\n"+ "Les viandes œufs et poissons_assimiles ont été choisies " + str(viandes_œufs_poissons_assimiles) +" fois"+"</p>")
+              print("<p>Les entrees et plats composés ont été choisies " + str(entrees_et_plats_composes) +" fois"+"</p>")
+              print("<p>Les produits sucrés composés ont été choisies " + str(produits_sucres) +" fois"+"</p>")
+              print("<p>Les aides culinaires ingredients divers composés ont été choisies " + str(aides_culinaires_ingredients_divers) +" fois"+"</p>")
+              print("<p>Les produits laitiers assimilés ont été choisies " + str(produits_laitiers_assimiles) +" fois"+"</p>")
+              print("<p>Les eaux et autres_boissons ont été choisies " + str(eaux_autres_boissons) +" fois"+"</p>")
+              print("<p>Les pates et diverses produits cerealiers ont été choisies " + str(pates_diverses_produits_cerealiers) +" fois"+"</p>")
+              print("<p>Les fruits et legumes legumineuses oleagineux ont été choisies " + str(fruits_legumes_legumineuses_oleagineux) +" fois"+"</p>")
+              print("<p>Les matieres grasses ont été choisies " + str(matieres_grasses) +" fois"+"</p>")
+              print("<p>Les aliments infantiles ont été choisies " + str(aliments_infantiles) +" fois"+"</p>")
+              print("<p>Les glaces et sorbets ont été choisies " + str(glaces_sorbets) +" fois"+"</p>")
+              print("<p>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</p>")
+
+
+
+          </py-script>
+        </div>
+      </div>
+       
+         
+    
+<!-- bas de page --> 
+
+  <div class="container">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a class="nav-link px-2 text-white">Horaires d'ouverture : Du lundi au vendredi, de 7h30 à 13h00 et de 14h30 à 17h</a></li>
+      </ul>
+      <p class="text-center text-white">&copy; 2022 Communauté d'Agglomération GRAND SUD CARAIBE Rue Bébian - 97100 Basse Terre</p>
+    </footer>
+  </div>
+</div> 
+   
+
+</body>
+
+</html>

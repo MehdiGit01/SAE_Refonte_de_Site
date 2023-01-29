@@ -1,0 +1,262 @@
+html, body {
+    height: 100%;
+    width: 100%;
+  }
+  
+  
+  /* couleur fond navbar */
+  #nav {
+    background-color: #44936B !important;
+    
+    
+  }
+
+ 
+  .nav-link{
+    font-size: 190% ;
+  }
+  
+  .mainimage{
+    position: relative;
+  
+  
+    
+  }
+  .title{
+    color: white;
+    
+  
+    font-weight: bold;
+
+  }
+   
+  
+  #boutton{
+    position: absolute;
+  top: 80%;
+    background-color: #44936B !important;
+    border-color:  #44936B !important;
+    font-weight: bold;
+  
+  }
+  
+  
+  
+  .nav-link:hover{
+    color: white !important;
+  }
+  
+  
+  .Actu h1{
+    margin-top: 5%;
+    text-align : center;
+    margin-bottom: 5%;
+    
+  }
+  #ActuPrincipale{
+    position: relative;
+    
+    width:50%;
+    top: 110%;
+    left:10%;
+    margin-bottom: 2%;
+      
+  }
+  #ActuP{
+   
+    position: relative;
+    left: 20%;
+  }
+ 
+  
+  .textactup{
+    position: absolute;    
+    background-color: #44936B;
+    top: 145%;
+    left:50%;
+    color: white;
+    
+  }
+  
+  #ActuSecondaire4{
+    
+    
+    width: 15%;
+    height: 50%;      
+     
+  }
+
+  #ActuSecondaire1{
+    
+    width: 15%;   
+     
+  }
+  #ActuSecondaire2{
+    
+    width: 15%;
+    height: 50%;
+    
+    
+     
+  }
+  #ActuSecondaire3{
+    
+    width: 15%;
+    height: 50%;
+    
+    
+     
+  }
+  .texts1{
+    position: absolute;   
+    color: black;
+    background-color: white;
+   top: 215%;
+   left:5%;
+  
+    
+  }
+
+  .texts2{
+    position: absolute;    
+    color: black;
+    top: 215%;
+    background-color: white;
+    
+   
+    left:25%;
+    
+  }
+
+  .texts3{
+    position: absolute;    
+    color: black;
+    top: 215%;
+    left:53%;
+    background-color: white;
+  }
+  .texts4{
+    position: absolute;    
+    color: black;
+    top: 215%;
+    left:82%;
+    background-color: white;
+  }
+  
+
+  .Actu{
+    margin-bottom: 5%;
+    
+  }
+
+  .Actu button{
+    margin-top: 5%;
+    position:relative;
+    left:45%;
+  }
+ 
+
+  .InfoPratiques{
+    background-color : #E1E1E1;
+    position: relative;
+  }
+  .InfoPratiques h1{
+    
+    text-align : center;
+    margin-bottom: 5%;
+    
+  }
+  .textI1{
+    position: absolute;
+    left:7%;
+    top:70%;
+  }
+  .textI2{
+    position: absolute;
+    left:32%;
+    top:70%;
+  }
+
+  .textI3{
+    position: absolute;
+    left:59%;
+    top:70%;
+  }
+
+  .textI4{
+    position: absolute;
+    left:87%;
+    top:70%;
+    
+    
+  }
+
+
+  #Lorem1{
+    position: relative;
+    width: 15%;
+    margin-bottom: 5%;
+    left:2%;
+    
+    
+    
+  }
+  #Lorem2{
+    position: relative;
+    width: 15%;
+    margin-bottom: 5%;
+    
+  }
+  #Lorem3{
+    position: relative;
+    width: 15%;
+    margin-bottom: 5%;
+   
+  }
+  #Lorem4{
+    position: relative;
+    width: 15%;
+    margin-bottom: 5%;
+    right:2%;
+  
+  }
+ 
+
+  .InfoPratiques button{
+    position:relative;
+    left:35%;
+   
+  margin-bottom: 2%;
+ 
+   
+  }
+
+  .Footer{
+    text-align: center;
+    padding-bottom: 3%;
+    background-color : #44936B;
+    
+    padding-top: 3%;
+  }
+
+  .bouttonQuiDescend {
+    height: 100px;
+    width: 100px;
+    background: crimson;
+    border-radius:  50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+  }
+
+  .icone {
+    width: 50px;
+  }
+  
+  .Propos94 {
+   text-align: center;
+  }
